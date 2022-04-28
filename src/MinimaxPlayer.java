@@ -1,4 +1,5 @@
 
+
 public class MinimaxPlayer implements Player {
 	int id; 
 	int opponent_id;
@@ -63,9 +64,10 @@ public class MinimaxPlayer implements Player {
     	int bestScore;
     	
     	if (isMaximizing) {
-    		bestScore = -000;
-    		for (cols = 0; cols < board.numCols(); cols++) {
+    		bestScore = -1000;
+    		for (int cols = 0; cols < board.numCols(); cols++) {
     			if (board.isValidMove(cols)) {
+    				board.move(cols,  id);
     				bestScore = Math.max(bestScore, minimax(board, depth - 1, false, arb));
     				board.unmove(cols, id);
     			}
